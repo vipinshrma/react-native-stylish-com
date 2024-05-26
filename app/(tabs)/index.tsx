@@ -1,70 +1,121 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { FlatList, Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome6 } from '@expo/vector-icons';
+import proudctImg1 from '../../assets/images/productImg1.png'
+import proudctImg2 from '../../assets/images/productImg2.png'
+import { router } from 'expo-router';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 
+const header = () => {
+  return (
+    <View>
+      <Text style={{ fontSize: 20, fontWeight: 600 }}>Vipan Sharma</Text>
+      <Text style={{ fontSize: 18, color: '#8F959E' }}>Welcome to laza</Text>
+    </View>
+  );
+};
+
+
+let array2 = [proudctImg1, proudctImg1, proudctImg1, proudctImg1, proudctImg2, proudctImg2, proudctImg2,proudctImg1, proudctImg1, proudctImg1, proudctImg1, proudctImg2, proudctImg2, proudctImg2]
+let array = [1, 2, 4, 5, 6, 6, 6]
+
+ 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+    <View style={{backgroundColor:'white'}}>
+      <View style={{ marginBottom: 20, marginTop: 20, marginLeft: 10, marginRight: 10 }}>
+        <Text style={{ fontSize: 20, fontWeight: 600 }}>Vipan Sharma</Text>
+        <Text style={{ fontSize: 18, color: '#8F959E', marginTop: 5 }}>Welcome to laza</Text>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={styles.search}>
+            <TextInput
+              placeholder='Search...'
+              style={{
+                backgroundColor: '#F5F6FA',
+                padding: 20,
+                marginRight: 10,
+                marginTop: 20,
+                borderRadius: 10,
+                position: 'relative',
+              }}
+
+              underlineColorAndroid='transparent'
+            />
+            <AntDesign name="search1" size={24} color="black" style={styles.icon} />
+          </View>
+        </View>
+      </View>
+      <View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginLeft: 10, marginRight: 10,marginBottom:10 }}>
+          <Text style={{ fontWeight: 600 }}>Choose Brands</Text>
+          <Text style={{ color: '#8F959E' }}>See all</Text>
+        </View>
+        <FlatList
+          data={array}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item, index }) => (
+            <Pressable onPress={()=>router.push(`/brandproductscreen/${455}`)}  style={{ backgroundColor: 'white', marginLeft: 10 }}>
+              <View style={{ backgroundColor: '#F5F6FA', padding: 10, borderRadius: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <View style={{ backgroundColor: '#FEFEFE', padding: 15, borderRadius: 10 }} >
+                  <Image source={require('../../assets/images/Adidas.png')} />
+                </View>
+                <Text style={{ fontWeight: '500' }}>Adidas</Text>
+              </View>
+            </Pressable>
+          )}
+          // keyExtractor={(item) => item}
+          horizontal
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      </View>
+
+      {/* products  */}
+      <View style={{ marginLeft: 10, marginTop: 10 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginLeft: 10, marginRight: 10, marginBottom: 20 }}>
+          <Text style={{ fontWeight: 600 }}>Choose Brands</Text>
+          <Text style={{ color: '#8F959E' }}>See all</Text>
+        </View>
+        <FlatList
+          data={array2}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item, index }) => (
+            <Pressable onPress={()=>router.push('/product/13')} >
+              <View style={{ padding: 10}}>
+                <Image
+                  source={require('../../assets/images/productImg1.png')}
+                  height={200}
+                  width={165}
+                  style={{ borderRadius: 10 }}
+                />
+              </View>
+              <View style={{ marginLeft: 10, marginBottom: 10 }}>
+                <Text>Nike Sportswear Club</Text>
+                <Text>Fleece</Text>
+                <Text style={{ fontWeight: '700' }} >$99</Text>
+              </View>
+            </Pressable>
+          )}
+          // keyExtractor={(item) => item}
+          // horizontal
+          numColumns={2}
+        />
+      </View>
+
+    </View>
+
   );
 }
 
+
+
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  search: {
+    position: 'relative',
+    width: '100%'
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  icon: {
     position: 'absolute',
-  },
-});
+    right: 20,
+    top: 40
+  }
+})

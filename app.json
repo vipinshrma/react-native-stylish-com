@@ -21,6 +21,7 @@
         "backgroundColor": "#ffffff"
       }
     },
+    "assets": ["./assets/fonts"],
     "web": {
       "bundler": "metro",
       "output": "static",
