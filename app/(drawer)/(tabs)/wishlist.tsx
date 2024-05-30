@@ -5,19 +5,19 @@ import { router } from 'expo-router';
 import { AntDesign } from '@expo/vector-icons';
 const productSample = [
   {
-    url: require('../../assets/images/productImg1.png')
+    url: require('../../../assets/images/productImg1.png')
   },
   {
-    url: require('../../assets/images/productImg2.png')
+    url: require('../../../assets/images/productImg2.png')
   },
   {
-    url: require('../../assets/images/productImg1.png')
+    url: require('../../../assets/images/productImg1.png')
   },
   {
-    url: require('../../assets/images/productImg1.png')
+    url: require('../../../assets/images/productImg1.png')
   },
   {
-    url: require('../../assets/images/productImg2.png')
+    url: require('../../../assets/images/productImg2.png')
   }
 ]
 export default function wishlist() {

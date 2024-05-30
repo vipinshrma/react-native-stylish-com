@@ -32,8 +32,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DefaultTheme : DefaultTheme}>
-      <Stack  >
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack>
+        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+        {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
         <Stack.Screen name='index' options={{ headerShown: false }} />
         <Stack.Screen name="(payments)" options={{ headerShown: false }} />
         <Stack.Screen name='address' options={{
@@ -74,15 +75,15 @@ export default function RootLayout() {
             backgroundColor: '#fff'
           },
           headerShown: true, title: "", headerTitle(props) {
-            return  <View style={{padding:10,backgroundColor:'#F5F6FA',flexDirection:'row',alignItems:'center',gap:10,borderRadius:10,width:80,height:50}}>
-            <Image 
-            source={require('../assets/images/Adidas.png')}
-            style={{height:'100%',width:'100%'}}
-            resizeMode='contain'
-            accessibilityLanguage=''
-            
-            />
-          </View>
+            return <View style={{ padding: 10, backgroundColor: '#F5F6FA', flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 10, width: 80, height: 50 }}>
+              <Image
+                source={require('../assets/images/Adidas.png')}
+                style={{ height: '100%', width: '100%' }}
+                resizeMode='contain'
+                accessibilityLanguage=''
+
+              />
+            </View>
           }, headerLeft: ({ canGoBack }) => {
             return <Pressable onPress={() => canGoBack ? router.back() : ''} style={{ padding: 15, marginLeft: 10, borderRadius: "50%", backgroundColor: '#F5F6FA' }}>
               <AntDesign name="arrowleft" size={24} color="black" />
@@ -90,7 +91,7 @@ export default function RootLayout() {
           },
           headerRight: ({ canGoBack }) => {
             return <Pressable onPress={() => canGoBack ? router.back() : ''} style={{ padding: 15, marginLeft: 10, borderRadius: "50%", backgroundColor: '#F5F6FA' }}>
-            <Ionicons name="bag-outline" size={24} color="black" />
+              <Ionicons name="bag-outline" size={24} color="black" />
             </Pressable>
           }
         }} />

@@ -6,12 +6,13 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import { AntDesign } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { DrawerActions } from '@react-navigation/native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  
+  const navigation = useNavigation()
   return (
     <Tabs
       screenOptions={{
@@ -21,8 +22,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          headerShadowVisible:false,
-          headerShown:true,
+          headerShadowVisible: false,
+          headerShown: true,
           tabBarIcon: ({ color, size, focused }) => {
             return focused ? <Entypo name="home" size={24} color="black" /> : <AntDesign name="home" size={24} color="black" />
           },
@@ -37,13 +38,13 @@ export default function TabLayout() {
           },
           title: 'Home',
           headerLeft: () => {
-            return <Pressable style={{ padding: 15, marginLeft: 10, borderRadius: "50%", backgroundColor: '#F5F6FA' }}>
-              <Image source={require('../../assets/images/menu.png')} />
+            return <Pressable onPress={() => navigation.dispatch(DrawerActions.openDrawer())} style={{ padding: 15, marginLeft: 10, borderRadius: "50%", backgroundColor: '#F5F6FA' }}>
+              <Image source={require('../../../assets/images/menu.png')} />
             </Pressable>
           },
           headerRight: () => {
             return <Pressable style={{ padding: 15, marginRight: 10, borderRadius: "50%", backgroundColor: '#F5F6FA' }}>
-              <Image source={require('../../assets/images/Bag.png')} />
+              <Image source={require('../../../assets/images/Bag.png')} />
             </Pressable>
           },
         }}
@@ -52,22 +53,22 @@ export default function TabLayout() {
       <Tabs.Screen
         name='wishlist'
         options={{
-          headerLeftContainerStyle:{
-            padding:20
+          headerLeftContainerStyle: {
+            padding: 20
           },
-          headerShown:true,
+          headerShown: true,
           tabBarIcon: ({ color, size, focused }) => {
             return focused ? <AntDesign name="heart" size={24} color="black" /> : <AntDesign name="hearto" size={24} color="black" />
           },
-          headerShadowVisible:false,
+          headerShadowVisible: false,
           headerLeft: () => {
-            return <Pressable onPress={()=>router.back()} style={{ marginRight: 10, height: 50, width: 50, borderRadius: "50%", backgroundColor: '#F5F6FA', justifyContent: 'center', alignItems: 'center' }}>
-            <AntDesign name="arrowleft" size={24} color="black" />
-          </Pressable>
+            return <Pressable onPress={() => router.back()} style={{ marginRight: 10, height: 50, width: 50, borderRadius: "50%", backgroundColor: '#F5F6FA', justifyContent: 'center', alignItems: 'center' }}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </Pressable>
           },
           headerRight: () => {
-            return  <Pressable onPress={()=>router.back()} style={{ marginRight: 10, height: 50, width: 50, borderRadius: "50%", backgroundColor: '#F5F6FA', justifyContent: 'center', alignItems: 'center' }}>
-            <Ionicons name="bag-outline" size={24} color="black" />
+            return <Pressable onPress={() => router.back()} style={{ marginRight: 10, height: 50, width: 50, borderRadius: "50%", backgroundColor: '#F5F6FA', justifyContent: 'center', alignItems: 'center' }}>
+              <Ionicons name="bag-outline" size={24} color="black" />
             </Pressable>
           },
           tabBarIconStyle: {
@@ -105,18 +106,18 @@ export default function TabLayout() {
       <Tabs.Screen
         name='cart'
         options={{
-          headerLeftContainerStyle:{
-            padding:20
+          headerLeftContainerStyle: {
+            padding: 20
           },
-          headerShown:true,
+          headerShown: true,
           tabBarIcon: ({ color, size, focused }) => {
             return focused ? <FontAwesome5 name="shopping-bag" size={24} color="black" /> : <SimpleLineIcons name="handbag" size={24} color='black' />
           },
-          headerShadowVisible:false,
+          headerShadowVisible: false,
           headerLeft: () => {
-            return <Pressable onPress={()=>router.back()} style={{ marginRight: 10, height: 50, width: 50, borderRadius: 50, backgroundColor: '#F5F6FA', justifyContent: 'center', alignItems: 'center' }}>
-            <AntDesign name="arrowleft" size={24} color="black" />
-          </Pressable>
+            return <Pressable onPress={() => router.back()} style={{ marginRight: 10, height: 50, width: 50, borderRadius: 50, backgroundColor: '#F5F6FA', justifyContent: 'center', alignItems: 'center' }}>
+              <AntDesign name="arrowleft" size={24} color="black" />
+            </Pressable>
           },
           tabBarIconStyle: {
             justifyContent: 'center',

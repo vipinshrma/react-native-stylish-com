@@ -13,19 +13,19 @@ export default function cart() {
   }, [navigation]);
   const productSample = [
     {
-      url: require('../../assets/images/Rectangle 568.png')
+      url: require('../../../assets/images/Rectangle 568.png')
     },
     {
-      url: require('../../assets/images/Rectangle 575.png')
+      url: require('../../../assets/images/Rectangle 575.png')
     },
     {
-      url: require('../../assets/images/Rectangle 576.png')
+      url: require('../../../assets/images/Rectangle 576.png')
     },
     {
-      url: require('../../assets/images/Rectangle 577.png')
+      url: require('../../../assets/images/Rectangle 577.png')
     },
     {
-      url: require('../../assets/images/Rectangle 578.png')
+      url: require('../../../assets/images/Rectangle 578.png')
     }
   ]
   return (
@@ -40,7 +40,7 @@ export default function cart() {
         }}>
           <View style={{ flexDirection: 'row', gap: 10, padding: 10 }}>
             <Image
-              source={require('../../assets/images/Rectangle 568.png')}
+              source={require('../../../assets/images/Rectangle 568.png')}
               style={{ height: 100, width: 100 }}
               resizeMode='contain'
             />
@@ -72,7 +72,7 @@ export default function cart() {
         }}>
           <View style={{ flexDirection: 'row', gap: 10, padding: 10 }}>
             <Image
-              source={require('../../assets/images/Rectangle 568.png')}
+              source={require('../../../assets/images/Rectangle 568.png')}
               style={{ height: 100, width: 100 }}
               resizeMode='contain'
             />
@@ -104,7 +104,7 @@ export default function cart() {
         }}>
           <View style={{ flexDirection: 'row', gap: 10, padding: 10 }}>
             <Image
-              source={require('../../assets/images/Rectangle 568.png')}
+              source={require('../../../assets/images/Rectangle 568.png')}
               style={{ height: 100, width: 100 }}
               resizeMode='contain'
             />

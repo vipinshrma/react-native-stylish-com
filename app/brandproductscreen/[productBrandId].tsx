@@ -22,7 +22,7 @@ const productSample = [
 ]
 export default function BrandProduct() {
   return (
-    <SafeAreaView style={{ backgroundColor: 'white', height: '100%' }}>
+    <SafeAreaView style={{ backgroundColor: 'white', height: '100%' ,flex:1}}>
       <View style={{ padding: 20 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <View>
@@ -35,7 +35,7 @@ export default function BrandProduct() {
           </Pressable>
         </View>
       </View>
-      <View>
+      <View style={{flex:1}}>
         <FlatList
           // centerContent
           data={productSample}
