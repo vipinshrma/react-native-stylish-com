@@ -3,6 +3,8 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 
 import { router } from 'expo-router';
+import useAppWrite from '@/hooks/useAppwrite';
+import {getAllProduct} from '../../../lib/appwrite'
 
 
 const header = () => {
@@ -20,6 +22,9 @@ let array = [1, 2, 4, 5, 6, 6, 6]
 
 
 export default function HomeScreen() {
+  const { isLoading, refetch, data }= useAppWrite(getAllProduct)
+
+  console.log("data",data)
   return (
     <SafeAreaView style={{ flex: 1 }} >
       <View style={{ backgroundColor: 'white', flex: 1 }}>

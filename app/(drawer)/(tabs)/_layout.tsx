@@ -1,7 +1,7 @@
 
 import { router, Tabs, useNavigation, usePathname } from 'expo-router';
 import React from 'react';
-import { Image, Pressable, View, Text } from 'react-native'
+import { Image, Pressable} from 'react-native'
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { AntDesign } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
@@ -80,26 +80,7 @@ export default function TabLayout() {
             display: 'none'
           },
           tabBarShowLabel: false,
-          // tabBarIconStyle: {
-          //   justifyContent: 'center',
-          //   alignItems: 'center',
-          //   marginTop: 20
-          // },
-          // headerShown:true,
-          // headerTransparent: true, // Makes the header transparent
-          // headerStyle: {
-          //   backgroundColor: '#fff'
-          // },
-          // headerLeft: () => {
-          //   return <Pressable onPress={() =>  router.back() } style={{ padding: 15, marginLeft: 10, borderRadius: "50%", backgroundColor: '#F5F6FA' }}>
-          //     <AntDesign name="arrowleft" size={24} color="black" />
-          //   </Pressable>
-          // },
-          // headerRight: () => {
-          //   return <Pressable onPress={() =>  router.back() } style={{ padding: 15, marginLeft: 10, borderRadius: "50%", backgroundColor: '#F5F6FA' }}>
-          //   <Ionicons name="bag-outline" size={24} color="black" />
-          //   </Pressable>
-          // }
+         
         }}
 
       />

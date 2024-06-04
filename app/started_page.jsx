@@ -34,7 +34,7 @@ export default function StartedPage() {
       {/* social  */}
       <View style={{ marginTop: 240,justifyContent:'center',alignItems:'center',flexDirection:'column',gap:10 }} >
         <Text onPress={()=>router.push('signin')}>Already have an account? Signin</Text>
-        <Pressable style={{justifyContent:'center', width:"100%",alignItems:'center',padding:30,backgroundColor:'#9775FA'}}>
+        <Pressable onPress={()=>router.push('/signup')} style={{justifyContent:'center', width:"100%",alignItems:'center',padding:30,backgroundColor:'#9775FA'}}>
             <Text style={{ color: 'white', fontWeight: 600 }}>Create an account</Text>
         </Pressable>
       </View>

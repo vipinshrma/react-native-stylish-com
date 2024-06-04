@@ -1,6 +1,5 @@
 import { View, Text, SafeAreaView, ScrollView, Pressable, Image, FlatList } from 'react-native'
 import React from 'react'
-import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { AntDesign } from '@expo/vector-icons';
 const productSample = [
@@ -22,7 +21,7 @@ const productSample = [
 ]
 export default function wishlist() {
   return (
-    <SafeAreaView style={{ backgroundColor: 'white' }}>
+    <SafeAreaView style={{ backgroundColor: 'white',height:'100%' }}>
       <View style={{ padding: 20}}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <View>
@@ -35,7 +34,7 @@ export default function wishlist() {
           </Pressable>
         </View>
       </View>
-      <View>  
+      <View style={{flex:1}}>  
         <FlatList
           // centerContent
           data={productSample}

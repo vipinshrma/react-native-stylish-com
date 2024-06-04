@@ -6,17 +6,19 @@ import { useRouter } from 'expo-router'
 
 import { NativeWindStyleSheet } from "nativewind";
 
-
 NativeWindStyleSheet.setOutput({
   default: "native",
 });
 export default function MainPage() {
   const router = useRouter()
+ 
   useEffect(()=>{
     setTimeout(()=>{
         router.replace('/started_page')
     },1000)
 },[])
+
+
   return (
     <SafeAreaView style={styleSheet.mainContainer}>
       <LandingPage/>

@@ -1,10 +1,25 @@
-import { View, Text, StyleSheet, TextInput, Switch, SafeAreaView, Pressable } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Switch, SafeAreaView, Pressable, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { router } from 'expo-router'
+import { signIn } from '../lib/appwrite'
 
 export default function Signin() {
-    const [form, setForm] = useState({})
+    const [form, setForm] = useState({email:'',password:''})
     let isEnabled = true
+
+    const signinHandler = () => {
+        if (!form?.password || !form?.email) {
+            Alert.alert('Error', 'Please fill required fields')
+            return;
+        }
+        signIn({ email: form?.email, password: form?.password }).then((res => {
+            console.log("res", res)
+            router.replace('(tabs)')
+        })).catch((err) => {
+            console.log("err",err)
+            // Alert.alert('Error', err)
+        })
+    }
     return (
         <SafeAreaView>
             <View style={style.container}>
@@ -12,11 +27,12 @@ export default function Signin() {
                 <Text style={style.subtitle}>Please enter you data to continue</Text>
                 <View style={style.form_area}>
                     <View style={style.form_field}>
-                        <Text style={style.form_name}>Username</Text>
+                        <Text style={style.form_name}>Email</Text>
                         <TextInput
                             style={style.input}
-                            onChangeText={(e) => setForm({ ...form, username: e })}
-                            value={form?.username}
+                            onChangeText={(e) => setForm({ ...form, email: e })}
+                            value={form?.email}
+                            keyboardType='email-address'
                         />
                     </View>
                     <View>
@@ -42,7 +58,7 @@ export default function Signin() {
             <View style={{ marginTop: 165, justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: 10 }} >
                 <Text style={{ textAlign: 'center', paddingLeft: 30, paddingRight: 30 }}>By connecting your account confirm that you agree with our <Text style={{ fontWeight: 'bold' }}> Term and Condition</Text></Text>
                 <Pressable style={{ justifyContent: 'center', width: "100%", alignItems: 'center', padding: 30, backgroundColor: '#9775FA' }}>
-                    <Text onPress={()=>router.replace('(tabs)')} style={{ color: 'white', fontWeight: 600 }}>Sign In</Text>
+                    <Text onPress={signinHandler} style={{ color: 'white', fontWeight: 600 }}>Sign In</Text>
                 </Pressable>
             </View>
         </SafeAreaView>
