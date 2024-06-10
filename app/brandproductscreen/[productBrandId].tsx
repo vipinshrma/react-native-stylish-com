@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, ScrollView, Pressable, Image, FlatList } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 const productSample = [
   {
@@ -21,6 +21,8 @@ const productSample = [
   }
 ]
 export default function BrandProduct() {
+  const searchParams = useLocalSearchParams()
+  console.log("searchParams",searchParams)
   return (
     <SafeAreaView style={{ backgroundColor: 'white', height: '100%' ,flex:1}}>
       <View style={{ padding: 20 }}>

@@ -4,7 +4,9 @@ import { FontAwesome6 } from '@expo/vector-icons';
 
 import { router } from 'expo-router';
 import useAppWrite from '@/hooks/useAppwrite';
-import {getAllProduct} from '../../../lib/appwrite'
+import { getAllProduct } from '../../../lib/appwrite'
+import { formatPrice } from '../../../lib/common'
+
 
 
 const header = () => {
@@ -22,9 +24,9 @@ let array = [1, 2, 4, 5, 6, 6, 6]
 
 
 export default function HomeScreen() {
-  const { isLoading, refetch, data }= useAppWrite(getAllProduct)
+  const { isLoading, refetch, data } = useAppWrite(getAllProduct)
 
-  console.log("data",data)
+  // console.log("data",data)
   return (
     <SafeAreaView style={{ flex: 1 }} >
       <View style={{ backgroundColor: 'white', flex: 1 }}>
@@ -85,24 +87,24 @@ export default function HomeScreen() {
         {/* product list  */}
         <View style={{ flex: 1 }}>
           <FlatList
-            data={array2}
+            data={data}
             scrollEnabled={true}
             showsHorizontalScrollIndicator={false}
-            renderItem={({ item, index }) => (
+            renderItem={({ item, index }:{item:any,index:number}) => (
               <View style={{ padding: 10 }}>
-                <Pressable onPress={() => router.push('/product/13')} >
+                <Pressable onPress={() => router.push(`/product/${item?.$id}`)} >
                   <View>
                     <Image
-                      source={item}
+                      source={{ uri: item?.productImage }}
                       height={200}
                       width={165}
                       style={{ borderRadius: 10 }}
                     />
                   </View>
                   <View style={{ marginLeft: 10, marginBottom: 10 }}>
-                    <Text>Nike Sportswear Club</Text>
-                    <Text>Fleece</Text>
-                    <Text style={{ fontWeight: '700' }} >$99</Text>
+                    <Text>{item?.productName}</Text>
+                    {/* <Text>{item?.}</Text> */}
+                    <Text style={{ fontWeight: '700' }} >{formatPrice(item?.price)}</Text>
                   </View>
                 </Pressable>
               </View>

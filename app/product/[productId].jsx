@@ -1,8 +1,9 @@
 import { View, Text, SafeAreaView, Image, Pressable, FlatList, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import proudctImg2 from '../../assets/images/productImg2.png'
-import { router } from 'expo-router';
+import { router, useGlobalSearchParams } from 'expo-router';
+import {getProductByProductId} from '../../lib/appwrite'
 
 
 const productSize = ['S', 'M', 'L', 'XL', '2XL']
@@ -30,6 +31,15 @@ const productSample2 = [
 ]
 
 export default function SingleProductPage() {
+  const {productId=''} = useGlobalSearchParams();
+  console.log("productId",productId)
+
+  useEffect(()=>{
+    if(productId){
+      const singleProdutId = getProductByProductId(productId);
+      console.log(singleProdutId)
+    }
+  },[productId])
   return (
     <SafeAreaView>
       <ScrollView>
