@@ -102,7 +102,8 @@ export default function HomeScreen() {
                     />
                   </View>
                   <View style={{ marginLeft: 10, marginBottom: 10 }}>
-                    <Text>{item?.productName}</Text>
+                    {/* <Text>{item?.productName}</Text> */}
+                    <Text>{item?.productName?.length > 20 ? item?.productName?.slice(0, 15) + '...' : item?.productName}</Text>
                     {/* <Text>{item?.}</Text> */}
                     <Text style={{ fontWeight: '700' }} >{formatPrice(item?.price)}</Text>
                   </View>

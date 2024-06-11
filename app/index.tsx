@@ -15,7 +15,6 @@ export default function MainPage() {
 
   useEffect(() => {
     getCurrentUser().then((res=>{
-      console.log("res",res)
       router.replace('(tabs)')
     })).catch((err)=>{
       console.log("err",err)

@@ -13,7 +13,6 @@ export default function Signin() {
             return;
         }
         signIn({ email: form?.email, password: form?.password }).then((res => {
-            console.log("res", res)
             router.replace('(tabs)')
         })).catch((err) => {
             console.log("err",err)

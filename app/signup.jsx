@@ -14,8 +14,6 @@ export default function Signup() {
         }
         try {
             const res = await createUser({ email: form?.email, password: form?.password, username: form?.username })
-            console.log("user", res)
-
             if (res) {
                 signIn({ email: form?.email, password: form?.password }).then((res => {
                     router.replace('(tabs)')
